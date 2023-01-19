@@ -19,11 +19,11 @@ No curso, desenvolveremos a seguinte aquitetura:
 
 ### Autenticação Stateless
 
-![Arquitetura Stateless](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/master/Conte%C3%BAdos/Stateless Auth JWT.png)
+![Arquitetura Stateless](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Stateless%20Auth%20JWT.png)
 
 ### Autenticação Stateful
 
-![Arquitetura Stateless](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/master/Conte%C3%BAdos/Stateful Auth.png)
+![Arquitetura Stateful](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Stateful%20Auth.png)
 
 ## Autor
 
