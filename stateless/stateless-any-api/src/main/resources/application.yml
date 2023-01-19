@@ -1,0 +1,6 @@
+server:
+  port: 8081
+
+app:
+  token:
+    secret-key: Y3Vyc28tYXV0ZW50aWNhY2FvLXN0YXRlZnVsLXN0YXRlbGVzcy1taWNyb3NzZXJ2aWNvcw==
