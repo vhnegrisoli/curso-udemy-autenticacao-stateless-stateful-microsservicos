@@ -1,2 +1,6 @@
 server:
   port: 8081
+
+app:
+  client:
+    base-url: ${STATEFUL_AUTH_BASE_URL:http://localhost:8080}

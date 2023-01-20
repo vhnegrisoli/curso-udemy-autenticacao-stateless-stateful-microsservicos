@@ -1,5 +1,7 @@
 package br.com.microservice.statelessanyapi.core.controller;
 
+import br.com.microservice.statelessanyapi.core.dto.AnyResponse;
+import br.com.microservice.statelessanyapi.core.service.AnyService;
 import br.com.microservice.statelessanyapi.core.service.JwtService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,20 +14,12 @@ import java.util.HashMap;
 @RestController
 @AllArgsConstructor
 @RequestMapping("api/resource")
-public class AppController {
+public class AnyController {
 
-    private final JwtService jwtService;
+    private final AnyService service;
 
     @GetMapping
-    public HashMap<String, Object> getResource(@RequestHeader String token) {
-        jwtService.validateAccessToken(token);
-        var data = new HashMap<String, Object>();
-        data.put("status", "Ok!");
-        data.put("success", true);
-        data.put("code", 200);
-        var authUser = jwtService.getAuthenticatedUser(token);
-        data.put("id", authUser.id());
-        data.put("username", authUser.username());
-        return data;
+    public AnyResponse getResource(@RequestHeader String accessToken) {
+        return service.getData(accessToken);
     }
 }

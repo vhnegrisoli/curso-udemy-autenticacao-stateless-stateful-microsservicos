@@ -2,21 +2,17 @@ package br.com.microservice.statefulanyapi.core.client;
 
 import br.com.microservice.statefulanyapi.core.dto.AuthUserResponse;
 import br.com.microservice.statefulanyapi.core.dto.TokenDTO;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.service.annotation.GetExchange;
+import org.springframework.web.service.annotation.HttpExchange;
+import org.springframework.web.service.annotation.PostExchange;
 
-@FeignClient(
-    url = "http://localhost:8080/api/auth",
-    name = "tokenClient",
-    contextId = "tokenClient"
-)
+@HttpExchange("/api/auth")
 public interface TokenClient {
 
-    @PostMapping("token/validate")
+    @PostExchange("token/validate")
     TokenDTO validateToken(@RequestHeader String accessToken);
 
-    @GetMapping("user")
+    @GetExchange("user")
     AuthUserResponse getAuthenticatedUser(@RequestHeader String accessToken);
 }

@@ -5,13 +5,12 @@ Repositório contendo o projeto desenvolvido do curso Autenticação Stateful e 
 ## Tecnologias
 
 * **Java 17**
-* **Spring Boot**
+* **Spring Boot 3**
 * **API REST**
 * **PostgreSQL (Container e Heroku Postgres)**
 * **Docker**
 * **docker-compose**
 * **JWT**
-* **Spring Cloud OpenFeign**
 
 ## Arquitetura Proposta
 

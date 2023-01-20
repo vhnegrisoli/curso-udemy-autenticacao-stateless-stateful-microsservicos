@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import static org.apache.commons.lang3.ObjectUtils.isEmpty;
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -24,11 +26,14 @@ public class TokenService {
         }
     }
 
-    public AuthUserResponse getAuthUser(String token) {
+    public AuthUserResponse getAuthenticatedUser(String token) {
         try {
             log.info("Sending request for auth user {}", token);
             var response = tokenClient.getAuthenticatedUser(token);
             log.info("Auth user found: {}", response.toString());
+            if (isEmpty(response) || isEmpty(response.id())) {
+                throw new AuthenticationException("User is not found.");
+            }
             return response;
         } catch (Exception ex) {
             throw new AuthenticationException("Error to get authenticated user!");
