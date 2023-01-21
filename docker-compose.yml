@@ -2,8 +2,8 @@ version: '3'
 
 services:
   
-  auth-db:
-    container_name: auth-db
+  stateless-auth-db:
+    container_name: stateless-auth-db
     image: postgres:12.5-alpine
     environment:
       POSTGRES_DB: auth-db
@@ -14,6 +14,19 @@ services:
       - auth
     ports:
       - "5432:5432"
+  
+  stateful-auth-db:
+    container_name: stateful-auth-db
+    image: postgres:12.5-alpine
+    environment:
+      POSTGRES_DB: auth-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    networks:
+      - auth
+    ports:
+      - "5433:5432"
 
   token-redis:
     container_name: token-redis
@@ -22,6 +35,66 @@ services:
       - auth
     ports:
       - "6379:6379"    
+
+  stateless-auth-api:
+    build: './stateless/stateless-auth-api'
+    container_name: stateless-auth-api
+    depends_on:
+      - stateless-auth-db
+    networks:
+      - auth
+    environment:
+      - JWT_SECRET_KEY=Y3Vyc28tYXV0ZW50aWNhY2FvLXN0YXRlZnVsLXN0YXRlbGVzcy1taWNyb3NzZXJ2aWNvcw==
+      - DB_HOST=stateless-auth-db
+      - DB_NAME=auth-db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+    ports:
+      - 8080:8080  
+
+  stateless-any-api:
+    build: './stateless/stateless-any-api'
+    container_name: stateless-any-api
+    depends_on:
+      - stateless-auth-db
+    networks:
+      - auth
+    environment:
+      - JWT_SECRET_KEY=Y3Vyc28tYXV0ZW50aWNhY2FvLXN0YXRlZnVsLXN0YXRlbGVzcy1taWNyb3NzZXJ2aWNvcw==
+    ports:
+      - 8081:8081
+
+  stateful-auth-api:
+    build: './stateful/stateful-auth-api'
+    container_name: stateful-auth-api
+    depends_on:
+      - stateful-auth-db
+      - token-redis
+    networks:
+      - auth
+    environment:
+      - DB_HOST=stateful-auth-db
+      - DB_NAME=auth-db
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
+      - REDIS_HOST=token-redis
+      - REDIS_PORT=6379
+    ports:
+      - 8082:8082
+
+  stateful-any-api:
+    build: './stateful/stateful-any-api'
+    container_name: stateful-any-api
+    depends_on:
+      - stateless-auth-db
+    networks:
+      - auth
+    environment:
+      - STATEFUL_AUTH_BASE_URL=http://stateful-auth-api:8082
+    ports:
+      - 8083:8083
 
 networks:
   auth:
