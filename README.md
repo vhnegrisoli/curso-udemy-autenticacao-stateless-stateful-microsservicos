@@ -83,9 +83,9 @@ Os acessos de host e porta das aplicações são:
 
 Exemplos de acesso:
 
-![API 1](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Swagger API 1.png)
+![API 1](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Swagger%20API%201.png)
 
-![API 2](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Swagger API 2.png)
+![API 2](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Swagger%20API%202.png)
 
 Os acessos de host e porta dos bancos de dados são:
 
