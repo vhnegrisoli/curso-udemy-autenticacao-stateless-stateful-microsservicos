@@ -30,7 +30,13 @@ No curso, desenvolveremos a seguinte aquitetura:
 * Em cada projeto, teremos a API chamada Any, responsável por retornar uma informação, qualquer, que irá apenas simular um microsserviço aleatório que precisa validar o token.
 * Na arquitetura `stateful`, será utilizado o banco de dados NoSQL Redis para armazenar os tokens.
 
-### Execução das aplicações
+### Executando os projetos
+
+Existem duas maneiras de rodar todos os projetos, manualmente ou via docker-compose.
+
+**Obs: independente da maneira que você queira rodar, será necessário realizar o `build` das aplicações com o comando `gradle build` na raiz de cada aplicação, para poder criar suas imagens.**
+
+#### Execução das aplicações manualmente
 
 Para rodar as aplicações, será necessário ter instalado:
 
@@ -38,14 +44,33 @@ Para rodar as aplicações, será necessário ter instalado:
 * Java 17
 * Gradle 7.6 ou superior
 
-Para rodar as aplicações, você pode rodar diretamente via IDE, ou também, pode executar o comando: `gradle bootRun` na raiz de cada aplicação.
+Para rodar as aplicações, você pode rodar diretamente via IDE, ou também, pode executar o comando: `gradle bootRun` na raiz de cada aplicação. Realizar o build antes.
 
 ### Execução dos containers
 
-Para executar o PostgreSQL e o Redis, basta executar o arquivo `docker-compose.yml`
+Para executar tudo, basta executar o arquivo `docker-compose.yml`
 com o comando:
 
 `docker-compose up --build -d`
+
+Lembrando que será necessário realizar o build das aplicações na primeira vez que for executar o docker-compose, ou a cada nova alteração, para que seja sempre construída uma imagem com as últimas alterações.
+
+### Acessando as aplicações
+
+Será possível acessar as aplicações via `Swagger`.
+
+Os acessos de host e porta das aplicações são:
+
+* stateless-auth-api: http://localhost:8080/swagger-ui/index.html
+* stateless-any-api: http://localhost:8081/swagger-ui/index.html
+* stateful-auth-api: http://localhost:8082/swagger-ui/index.html
+* stateful-any-api: http://localhost:8083/swagger-ui/index.html
+
+Os acessos de host e porta dos bancos de dados são:
+
+* stateless-auth-db (PostgreSQL): localhost:5432
+* stateful-auth-db (PostgreSQL): localhost:5433
+* token-redis (Redis): localhost:6379
 
 ## Autor
 
