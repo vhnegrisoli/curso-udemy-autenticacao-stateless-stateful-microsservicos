@@ -32,9 +32,24 @@ No curso, desenvolveremos a seguinte aquitetura:
 
 ### Executando os projetos
 
-Existem duas maneiras de rodar todos os projetos, manualmente ou via docker-compose.
+Existem três maneiras de rodar todos os projetos, via script utilitário que deixei para auxiliar no desenvolvimento, manualmente ou via docker-compose.
 
-**Obs: independente da maneira que você queira rodar, será necessário realizar o `build` das aplicações com o comando `gradle build` na raiz de cada aplicação, para poder criar suas imagens.**
+**Obs: independente da maneira que você queira rodar, será necessário realizar o `build` das aplicações com o comando `gradle build` na raiz de cada aplicação, para poder criar suas imagens, ou seja, será necessário ter o Docker e o Gradle instalado.**
+
+### Rodando tudo com script utiliário
+
+Para rodar tudo com o script, basta executar o comando:
+
+`python build.py`
+
+Para isso, será necessário ter o Python 3 instalado.
+
+O script fará todos os seguintes processos:
+
+* Parará e apagará todos os containers rodando.
+* Entrará no diretório de cada uma das 4 APIs e rodará o comando `gradle build` em paralelo para não levar muito tempo realizando sequencialmente.
+* Irá aguardar o build de cada API finalizar.
+* Assim que todos os builds finalizarem, então irá executar todos os containers novamente.
 
 #### Execução das aplicações manualmente
 
@@ -65,6 +80,12 @@ Os acessos de host e porta das aplicações são:
 * stateless-any-api: http://localhost:8081/swagger-ui/index.html
 * stateful-auth-api: http://localhost:8082/swagger-ui/index.html
 * stateful-any-api: http://localhost:8083/swagger-ui/index.html
+
+Exemplos de acesso:
+
+![API 1](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Swagger API 1.png)
+
+![API 2](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Swagger API 2.png)
 
 Os acessos de host e porta dos bancos de dados são:
 
