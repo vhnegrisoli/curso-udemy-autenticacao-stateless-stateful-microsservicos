@@ -33,14 +33,14 @@ public class AuthService {
         }
     }
 
-    public TokenDTO validateToken(TokenDTO request) {
-        validateExistingToken(request);
-        jwtService.validateAccessToken(request.accessToken());
-        return request;
+    public TokenDTO validateToken(String accessToken) {
+        validateExistingToken(accessToken);
+        jwtService.validateAccessToken(accessToken);
+        return new TokenDTO(accessToken);
     }
 
-    private void validateExistingToken(TokenDTO request) {
-        if (isEmpty(request) || isEmpty(request.accessToken())) {
+    private void validateExistingToken(String accessToken) {
+        if (isEmpty(accessToken)) {
             throw new ValidationException("The access token must be informed!");
         }
     }
