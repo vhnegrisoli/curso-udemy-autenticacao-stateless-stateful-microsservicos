@@ -18,7 +18,8 @@ def docker_compose_up():
     print("Pipeline finished!")
 
 
-def run_all_builds():
+def build_all_applications():
+    print("Starting to build applications!")
     threading.Thread(target=build_application,
                      args={"stateless/stateless-auth-api"}).start()
     threading.Thread(target=build_application,
@@ -29,12 +30,23 @@ def run_all_builds():
                      args={"stateful/stateful-any-api"}).start()
 
 
-if __name__ == "__main__":
-    print("Pipeline started!")
+def remove_remaining_containers():
     print("Removing all containers.")
     os.system("docker-compose down")
-    print("Starting to build applications!")
-    run_all_builds()
+    containers = os.popen('docker ps -aq').read().split('\n')
+    containers.remove('')
+    if len(containers) > 0:
+        print("There are still {} containers created".format(containers))
+        for container in containers:
+            print("Stopping container {}".format(container))
+            os.system("docker container stop {}".format(container))
+        os.system("docker container prune -f")
+
+
+if __name__ == "__main__":
+    print("Pipeline started!")
+    remove_remaining_containers()
+    build_all_applications()
     while len(threads) > 0:
         pass
     threading.Thread(target=docker_compose_up).start()
