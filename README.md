@@ -78,7 +78,7 @@ Será possível acessar as aplicações via `Swagger` ou via `Postman`.
 
 Caso queira executar via `Postman`, basta realizar o download da `Collection` ![disponibilizada aqui](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Curso%20Autentica%C3%A7%C3%A3o%20Stateless%20e%20Stateful%20em%20Microsservi%C3%A7os.postman_collection.json), e importar em seu `Postman`.
 
-![Collections](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Collection.png)
+![Collections](https://github.com/vhnegrisoli/curso-udemy-autenticacao-stateless-stateful-microsservicos/blob/main/Conte%C3%BAdos/Collection%20and%20Requests.png)
 
 #### Swagger
 
