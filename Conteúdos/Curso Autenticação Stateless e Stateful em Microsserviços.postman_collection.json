@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "25233570-d74d-48c5-9df5-b60b58a53988",
+		"name": "Curso Autenticação Stateless e Stateful em Microsserviços",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Stateless",
+			"item": [
+				{
+					"name": "Auth-API",
+					"item": [
+						{
+							"name": "Gerar token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"victor.negrisoli\",\r\n  \"password\": \"123456\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validar token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEiLCJ1c2VybmFtZSI6InZpY3Rvci5uZWdyaXNvbGkiLCJleHAiOjE2NzQ2NDgxMDN9.pBbs9YAqcfqFFpxiov41yKAPbGBUe9goSCELmxGZjRuBXHes4pdbKw9IYcLtnKjpcOmOYV3zEXXJvqKqDqIkQw",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/auth/token/validate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"auth",
+										"token",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Any-API",
+					"item": [
+						{
+							"name": "Recuperar dados",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "accessToken",
+										"value": "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjEiLCJ1c2VybmFtZSI6InZpY3Rvci5uZWdyaXNvbGkiLCJleHAiOjE2NzQ2NDgxMDN9.pBbs9YAqcfqFFpxiov41yKAPbGBUe9goSCELmxGZjRuBXHes4pdbKw9IYcLtnKjpcOmOYV3zEXXJvqKqDqIkQw",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8081/api/resource",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"resource"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Stateful",
+			"item": [
+				{
+					"name": "Auth-API",
+					"item": [
+						{
+							"name": "Gerar token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"victor.negrisoli\",\r\n  \"password\": \"123456\"\r\n}"
+								},
+								"url": {
+									"raw": "http://localhost:8082/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout (remover token)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "accessToken",
+										"value": "81d70c85-5f60-4713-a0ef-f6b5f8b7f763",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8082/api/auth/logout",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validar token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "accessToken",
+										"value": "0d54d8ff-ddff-4504-8536-a30b775b66e8",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8082/api/auth/token/validate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"auth",
+										"token",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Usuario autenticado",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "accessToken",
+										"value": "81d70c85-5f60-4713-a0ef-f6b5f8b7f763",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8082/api/auth/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"api",
+										"auth",
+										"user"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Any-API",
+					"item": [
+						{
+							"name": "Recuperar dados",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									},
+									{
+										"key": "accessToken",
+										"value": "81d70c85-5f60-4713-a0ef-f6b5f8b7f763",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8083/api/resource",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"resource"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
