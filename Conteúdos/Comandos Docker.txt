@@ -1,0 +1,50 @@
+Estrutura básica do projeto:
+
+stateless/
+	stateless-auth-api/
+		- stateless-auth-db (auth-db) 5432:5432
+	
+	stateless-any-api/
+
+stateful/
+	stateful-auth-api/
+		- stateful-auth-db (auth-db) 5433:5432
+		- token-redis redis:latest   6379
+
+	stateful-any-api/	
+
+===================================================
+
+Remover containers já existentes:
+
+Parar todos: docker stop $(docker ps -aq)
+
+Remover todos: docker container prune -f
+
+===================================================
+
+Criar bancos de dados PostgreSQL:
+
+stateless-auth-db:
+
+docker container run --name stateless-auth-db -p 5432:5432 -e POSTGRES_DB=auth-db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgres:latest
+
+stateful-auth-db:
+
+docker container run --name stateful-auth-db -p 5433:5432 -e POSTGRES_DB=auth-db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres postgres:latest
+
+===================================================
+
+Criar Redis:
+
+docker container run --name token-redis -p 6379 -d redis:latest
+
+Visualizar logs:
+
+docker logs --follow token-redis
+
+===================================================
+
+Executar comando shell para se conectar ao Redis:
+
+docker exec -it token-redis redis-cli
