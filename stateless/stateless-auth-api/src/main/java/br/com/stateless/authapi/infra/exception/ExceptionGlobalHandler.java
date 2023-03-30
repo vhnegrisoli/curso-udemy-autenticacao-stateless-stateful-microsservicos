@@ -16,7 +16,7 @@ public class ExceptionGlobalHandler {
 
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<?> handleAuthenticationException(AuthenticationException authenticationException) {
-        var details = new ExceptionDetails(HttpStatus.BAD_REQUEST.value(), authenticationException.getMessage());
+        var details = new ExceptionDetails(HttpStatus.UNAUTHORIZED.value(), authenticationException.getMessage());
         return new ResponseEntity<>(details, HttpStatus.UNAUTHORIZED);
     }
 }
