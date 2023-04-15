@@ -2,6 +2,8 @@
 
 Repositório contendo o projeto desenvolvido do curso Autenticação Stateful e Stateles em Microsserviços, ministrado por mim para a plataforma Udemy.
 
+Para acessar o curso na plataforma, basta acessar esta URL: https://www.udemy.com/course/autenticacao-stateful-stateless-microsservicos/
+
 ## Tecnologias
 
 * **Java 17**
