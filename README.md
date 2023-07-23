@@ -1,6 +1,6 @@
-# Projeto: Curso Udemy - Autenticação Stateful e Stateles em Microsserviços
+# Projeto: Curso Udemy - Autenticação Stateful e Stateless em Microsserviços
 
-Repositório contendo o projeto desenvolvido do curso Autenticação Stateful e Stateles em Microsserviços, ministrado por mim para a plataforma Udemy.
+Repositório contendo o projeto desenvolvido do curso Autenticação Stateful e Stateless em Microsserviços, ministrado por mim para a plataforma Udemy.
 
 Para acessar o curso na plataforma, basta acessar esta URL: https://www.udemy.com/course/autenticacao-stateful-stateless-microsservicos/
 
@@ -9,7 +9,7 @@ Para acessar o curso na plataforma, basta acessar esta URL: https://www.udemy.co
 * **Java 17**
 * **Spring Boot 3**
 * **API REST**
-* **PostgreSQL (Container e Heroku Postgres)**
+* **PostgreSQL (Container)**
 * **Docker**
 * **docker-compose**
 * **JWT**
