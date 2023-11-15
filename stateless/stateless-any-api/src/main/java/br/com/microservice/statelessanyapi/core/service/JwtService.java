@@ -34,11 +34,11 @@ public class JwtService {
         var accessToken = extractToken(token);
         try {
             return Jwts
-                .parserBuilder()
-                .setSigningKey(generateSign())
+                .parser()
+                .verifyWith(generateSign())
                 .build()
-                .parseClaimsJws(accessToken)
-                .getBody();
+                .parseSignedClaims(accessToken)
+                .getPayload();
         } catch (Exception ex) {
             throw new AuthenticationException("Invalid token: " + ex.getMessage());
         }

@@ -34,8 +34,8 @@ public class JwtService {
         data.put("username", user.getUsername());
         return Jwts
             .builder()
-            .setClaims(data)
-            .setExpiration(generateExpiresAt())
+            .claims(data)
+            .expiration(generateExpiresAt())
             .signWith(generateSign())
             .compact();
     }
@@ -52,11 +52,11 @@ public class JwtService {
         var accessToken = extractToken(token);
         try {
             Jwts
-                .parserBuilder()
-                .setSigningKey(generateSign())
+                .parser()
+                .verifyWith(generateSign())
                 .build()
-                .parseClaimsJws(accessToken)
-                .getBody();
+                .parseSignedClaims(accessToken)
+                .getPayload();
         } catch (Exception ex) {
             throw new AuthenticationException("Invalid token: " + ex.getMessage());
         }
